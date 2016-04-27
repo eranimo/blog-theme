@@ -1,7 +1,9 @@
 mixin postInfo(item)
     .post-meta
-        .post-time
-            != full_date(item.date, 'll')
+        span.meta-section
+            span Posted on 
+            span.post-time
+                != full_date(item.date, 'll')
 
 mixin postList()
     ul.archive.post-list
@@ -24,7 +26,7 @@ mixin posts()
                             != item.title
                     +postInfo( item )
                     .post-content
-                        != item.excerpt
+                        != truncate(item.more, { length: 250})
                     a.read-more(href=item.path)!= __('more')
         - })
 
